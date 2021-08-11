@@ -1,0 +1,5 @@
+scrapy~=2.5.0
+pymongo[srv]~=3.11.4
+scour~=0.38.2
+svgutils~=0.3.4
+requests~=2.26.0

@@ -26,15 +26,15 @@ class PublicdomainvectorsPipeline(object):
 
         try:
             if db.vectors.find_one({"source_url": item['source_url']}):
-                print('Already exists vector: {0}'.format(item['source_url']))
-                raise DropItem("Duplicate item found: %s" % item['source_url'])
+                print('Already exists vector: {0}'.format(item['filename']))
+                raise DropItem("Duplicate item found: %s" % item['filename'])
 
             if str(db.vectors.insert_one(item)):
-                logger.info('Successful vector id: {0}'.format(item['source_url']))
+                logger.info('Successful vector id: {0}'.format(item['filename']))
                 self.post_seen.add(item['source_url'])
             else:
-                logger.error('Error vector id: {0}'.format(item['source_url']))
-                raise DropItem(f"Error item: {item['source_url']}")
+                logger.error('Error vector id: {0}'.format(item['filename']))
+                raise DropItem(f"Error item: {item['filename']}")
         except Exception as ex:
             raise DropItem(ex)
 

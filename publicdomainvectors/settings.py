@@ -11,6 +11,11 @@ MONGO_DATABASE = 'publicdomainvectors'
 MONGO_USERNAME = 'barisariburnu'
 MONGO_PASSWORD = 'barisariburnu'
 
+CATEGORIES = [
+    'animal', 'architecture', 'backgrounds', 'business', 'flags', 'food-and-drink',
+    'nature', 'objects', 'people', 'signs-symbols', 'transportation'
+]
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'publicdomainvectors (+http://www.yourdomain.com)'
 

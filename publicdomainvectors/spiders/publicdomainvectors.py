@@ -7,7 +7,7 @@ from scrapy.spiders import CrawlSpider, Rule
 class PublicDomainVectorsSpider(CrawlSpider):
     name = 'publicdomainvectors'
     allowed_domains = ['publicdomainvectors.org']
-    start_urls = [f'https://publicdomainvectors.org/en/free-clipart/{CATEGORIES[0]}/']
+    start_urls = [f'https://publicdomainvectors.org/en/free-clipart/{CATEGORIES[0]}/date/all/360/1']
 
     rules = (
         Rule(LinkExtractor(restrict_css='.vector-thumbnail-wrap > a'), callback='parse_item', follow=False),

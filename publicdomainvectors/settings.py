@@ -12,7 +12,7 @@ MONGO_USERNAME = 'barisariburnu'
 MONGO_PASSWORD = 'barisariburnu'
 
 CATEGORIES = [
-    'animal', 'architecture', 'backgrounds', 'business', 'flags', 'food-and-drink',
+    'animals', 'architecture', 'backgrounds', 'business', 'flags', 'food-and-drink',
     'nature', 'objects', 'people', 'signs-symbols', 'transportation'
 ]
 

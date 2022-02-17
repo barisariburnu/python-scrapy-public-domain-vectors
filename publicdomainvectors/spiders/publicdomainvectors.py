@@ -2,6 +2,14 @@ from publicdomainvectors.items import PublicdomainvectorsItemParser
 from publicdomainvectors.settings import CATEGORIES
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
+from publicdomainvectors.settings import MONGO_USERNAME, MONGO_PASSWORD, MONGO_DATABASE
+from pymongo import MongoClient
+
+client = MongoClient(
+    f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@ireland.xjelg.mongodb.net/{MONGO_DATABASE}"
+    f"?retryWrites=true&w=majority"
+)
+db = client.get_default_database()
 
 
 class PublicDomainVectorsSpider(CrawlSpider):
@@ -17,9 +25,12 @@ class PublicDomainVectorsSpider(CrawlSpider):
     def parse_item(self, response):
         item = PublicdomainvectorsItemParser(response)
 
-        if not item.save():
-            return {
-                'source_url': response.url
-            }
+        if db.vectors.find_one({"source_url": item.source_url}):
+            print('Already exists vector: {0}'.format(item.filename))
+        else:
+            if not item.save():
+                return {
+                    'source_url': response.url
+                }
 
         return item.to_json()

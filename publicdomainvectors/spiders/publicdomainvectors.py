@@ -7,7 +7,7 @@ from pymongo import MongoClient
 
 client = MongoClient(
     f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@ireland.xjelg.mongodb.net/{MONGO_DATABASE}"
-    f"?retryWrites=true&w=majority"
+    f"?retryWrites=true&w=majority", tls=True, tlsAllowInvalidCertificates=True
 )
 db = client.get_default_database()
 
@@ -15,7 +15,7 @@ db = client.get_default_database()
 class PublicDomainVectorsSpider(CrawlSpider):
     name = 'publicdomainvectors'
     allowed_domains = ['publicdomainvectors.org']
-    start_urls = [f'https://publicdomainvectors.org/en/free-clipart/{CATEGORIES[0]}/date/all/360/1']
+    start_urls = [f'https://publicdomainvectors.org/en/free-clipart/{CATEGORIES[4]}/date/all/360/1']
 
     rules = (
         Rule(LinkExtractor(restrict_css='.vector-thumbnail-wrap > a'), callback='parse_item', follow=False),

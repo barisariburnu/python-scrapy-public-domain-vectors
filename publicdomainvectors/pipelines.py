@@ -7,7 +7,7 @@ from pymongo import MongoClient
 
 client = MongoClient(
     f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@ireland.xjelg.mongodb.net/{MONGO_DATABASE}"
-    f"?retryWrites=true&w=majority"
+    f"?retryWrites=true&w=majority", tls=True, tlsAllowInvalidCertificates=True
 )
 db = client.get_default_database()
 logger = logging.getLogger(__name__)

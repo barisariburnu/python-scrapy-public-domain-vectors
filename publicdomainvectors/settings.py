@@ -8,8 +8,8 @@ NEWSPIDER_MODULE = 'publicdomainvectors.spiders'
 DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 
 MONGO_DATABASE = 'publicdomainvectors'
-MONGO_USERNAME = 'barisariburnu'
-MONGO_PASSWORD = 'barisariburnu'
+MONGO_USERNAME = 'python'
+MONGO_PASSWORD = 'python'
 
 CATEGORIES = [
     'animals', 'architecture', 'backgrounds', 'business', 'flags', 'food-and-drink',

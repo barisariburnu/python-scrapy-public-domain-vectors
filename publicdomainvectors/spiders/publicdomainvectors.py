@@ -27,10 +27,10 @@ class PublicDomainVectorsSpider(CrawlSpider):
 
         if db.vectors.find_one({"source_url": item.source_url}):
             print('Already exists vector: {0}'.format(item.filename))
-        else:
-            if not item.save():
-                return {
-                    'source_url': response.url
-                }
+            return
+
+        if not item.save():
+            print('Error occurred while downloading: {0}'.format(item.filename))
+            return
 
         return item.to_json()

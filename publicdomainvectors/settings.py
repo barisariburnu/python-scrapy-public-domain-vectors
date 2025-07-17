@@ -1,5 +1,8 @@
 import os
 
+# Modern Scrapy için reactor ayarları
+TWISTED_REACTOR = 'twisted.internet.selectreactor.SelectReactor'
+
 BOT_NAME = 'publicdomainvectors'
 
 SPIDER_MODULES = ['publicdomainvectors.spiders']

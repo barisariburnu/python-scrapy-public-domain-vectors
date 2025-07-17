@@ -6,7 +6,7 @@ from publicdomainvectors.settings import MONGO_USERNAME, MONGO_PASSWORD, MONGO_D
 from pymongo import MongoClient
 
 client = MongoClient(
-    f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@ireland.xjelg.mongodb.net/{MONGO_DATABASE}"
+    f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@cluster.u8tllb7.mongodb.net/{MONGO_DATABASE}"
     f"?retryWrites=true&w=majority", tls=True, tlsAllowInvalidCertificates=True
 )
 db = client.get_default_database()

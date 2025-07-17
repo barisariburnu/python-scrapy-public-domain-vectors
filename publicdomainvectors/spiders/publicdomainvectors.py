@@ -1,5 +1,4 @@
 from publicdomainvectors.items import PublicdomainvectorsItemParser
-from publicdomainvectors.settings import CATEGORIES
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 import scrapy
@@ -22,11 +21,11 @@ class PublicDomainVectorsSpider(CrawlSpider):
     )
 
     def start_requests(self):
-        for category in CATEGORIES:
-            for i in range(1, 11):
-                yield scrapy.Request(
-                    url=f'https://publicdomainvectors.org/en/free-clipart/{category}/date/all/360/{i}'
-                )
+        for i in range(1, 10):
+            yield scrapy.Request(
+                url=f'https://publicdomainvectors.org/en/free-clipart/date/all/360/{i}'
+            )
+            
 
     def parse_item(self, response):
         item = PublicdomainvectorsItemParser(response)

@@ -4,6 +4,8 @@ from scrapy.spiders import CrawlSpider, Rule
 import scrapy
 from publicdomainvectors.settings import MONGO_USERNAME, MONGO_PASSWORD, MONGO_DATABASE
 from pymongo import MongoClient
+import logging
+logging.getLogger('pymongo').setLevel(logging.WARNING)
 
 client = MongoClient(
     f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@cluster.u8tllb7.mongodb.net/{MONGO_DATABASE}"
@@ -21,7 +23,7 @@ class PublicDomainVectorsSpider(CrawlSpider):
     )
 
     def start_requests(self):
-        for i in range(1, 10):
+        for i in range(1, 2):
             yield scrapy.Request(
                 url=f'https://publicdomainvectors.org/en/free-clipart/date/all/360/{i}'
             )
